@@ -7,9 +7,6 @@ function Unit(value){
 		var result = fn(value);
 		return isMonad(result) ? result : new Unit(result);
 	};
-	this.peek = function(){
-		return value;
-	};
 }
 
 module.exports = function unit(value){

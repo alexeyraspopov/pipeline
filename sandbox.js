@@ -8,10 +8,22 @@ function str(a){
 	return String(a);
 }
 
-console.log(unit(13).bind(square).peek() === square(13));
+function assertAxiom(left, right){
+	function chain(val, fn){
+		return val.bind ? val.bind(fn) : fn(val);
+	}
 
-console.log(unit(13).bind(unit).peek() === unit(13).peek());
+	chain(left, function(valueA){
+		chain(right, function(valueB){
+			console.log(valueA === valueB);
+		});
+	});
+}
 
-console.log(unit(13).bind(square).bind(str).peek() === unit(13).bind(function(value){
+assertAxiom(unit(13).bind(square), square(13));
+
+assertAxiom(unit(13).bind(unit), unit(13));
+
+assertAxiom(unit(13).bind(square).bind(str), unit(13).bind(function(value){
 	return unit(square(value)).bind(str);
-}).peek());
+}));
