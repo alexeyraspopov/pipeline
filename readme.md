@@ -16,9 +16,9 @@
 ## How can it be combined?
 
 ```javascript
-function showNewPosts(id){
+function getNewPosts(id){
   return unit(loadUser(id)).bind(getUserPosts).bind(filterNewPosts);
 }
 
-showNewPosts(id).bind(template).bind(updateUI);
+getNewPosts(id).bind(template).bind(updateUI);
 ```
