@@ -7,6 +7,7 @@
  - Thunk
  - Generator
  - Pure Value
+ - Maybe, Either
 
 ## Why?
 
