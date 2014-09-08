@@ -5,7 +5,8 @@
  - Promise
  - Observable
  - Thunk
- - Generator (?)
+ - Generator
+ - Pure Value
 
 ## Why?
 
