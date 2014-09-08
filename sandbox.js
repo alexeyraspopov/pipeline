@@ -1,14 +1,19 @@
-function unit(value){
-	return {
-		isMonad: true,
-		bind: function(fn){
-			var result = fn(value);
-			return result && result.isMonad ? result : unit(result);
-		},
-		peek: function(){
-			return value;
-		}
+function isMonad(target){
+	return target instanceof Unit;
+}
+
+function Unit(value){
+	this.bind = function(fn){
+		var result = fn(value);
+		return isMonad(result) ? result : new Unit(result);
 	};
+	this.peek = function(){
+		return value;
+	};
+}
+
+function unit(value){
+	return new Unit(value);
 }
 
 function square(a){
