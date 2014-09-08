@@ -1,3 +1,5 @@
+// TODO: update bind method for Promises
+
 function isMonad(target){
 	return target instanceof Unit;
 }
@@ -11,4 +13,4 @@ function Unit(value){
 
 module.exports = function unit(value){
 	return new Unit(value);
-}
+};
