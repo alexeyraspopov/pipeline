@@ -40,3 +40,23 @@ Unit has one method
  * `morphism` - function which receives value of unit and returns new value or new unit
 
 ## Examples
+
+```javascript
+function getUserInfo(id){
+  return new Promise();
+}
+
+function getPosts(user){
+  return Maybe(user.posts);
+}
+
+function template(data){
+  return _.template('', data);
+}
+
+function appendToView(html){
+  document.body.innerHTML = html;
+}
+
+unit(getUserInfo(id)).bind(getPosts).bind(template).bind(appendToView);
+```
