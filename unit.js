@@ -4,11 +4,16 @@ function isMonad(target){
 	return target instanceof Unit;
 }
 
+function wrap(result){
+	return isMonad(result) ? result : new Unit(result);
+}
+
+function fromValue(value, fn){
+	return wrap(fn(value));
+}
+
 function Unit(value){
-	this.bind = function(fn){
-		var result = fn(value);
-		return isMonad(result) ? result : new Unit(result);
-	};
+	this.bind = fromValue.bind(null, value);
 }
 
 module.exports = function unit(value){
