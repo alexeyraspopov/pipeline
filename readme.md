@@ -19,16 +19,6 @@
  1. Do we really need universal wrapper? jQ, promises, chains, array flow resolve their own tasks
  2. How can I describe "unwrapping" process?
 
-## How can it be combined?
-
-```javascript
-function getNewPosts(id){
-	return unit(loadUser(id)).bind(getUserPosts).bind(filterNewPosts);
-}
-
-getNewPosts(id).bind(template).bind(updateUI);
-```
-
 ## API
 
     unit(value);
@@ -63,4 +53,12 @@ function appendToView(html){
 }
 
 unit(getUserInfo(id)).bind(getPosts).bind(template).bind(appendToView);
+```
+
+```javascript
+function getNewPosts(id){
+	return unit(loadUser(id)).bind(getUserPosts).bind(filterNewPosts);
+}
+
+getNewPosts(id).bind(template).bind(updateUI);
 ```
