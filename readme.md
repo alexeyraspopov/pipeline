@@ -9,12 +9,15 @@
  - Pure Value
  - Maybe, Either
 
-## Idea?
+## Why?
 
  1. It's difficult to go from sync to async function without changing way of invokation of this function
  2. Calculation flow should be explicit
- 3. Do we really need universal wrapper? jQ, promises, chains, array flow resolve their own tasks
- 4. How can I describe "unwrapping" process?
+
+## Questions
+
+ 1. Do we really need universal wrapper? jQ, promises, chains, array flow resolve their own tasks
+ 2. How can I describe "unwrapping" process?
 
 ## How can it be combined?
 
