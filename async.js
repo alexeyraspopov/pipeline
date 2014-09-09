@@ -12,4 +12,8 @@ function log(){
 	console.log(arguments);
 }
 
-unit(13).bind(process).bind(log);
+function inc(value){
+	return value + 1;
+}
+
+unit(13).bind(process).bind(inc).bind(log);
