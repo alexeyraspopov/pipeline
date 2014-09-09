@@ -29,6 +29,14 @@ getNewPosts(id).bind(template).bind(updateUI);
 
     unit(value);
 
+ * `value` - everything you want
+
 Returns wrapped value which can be binded to the flow. Value can be simple object, primitive value or previously wrapped value (Promise, Thunk, etc)
+
+Unit has one method
+
+    unit(value).bind(morphism);
+
+ * `morphism` - function which receives value of unit and returns new value or new unit
 
 ## Examples
