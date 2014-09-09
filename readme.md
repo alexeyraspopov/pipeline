@@ -24,3 +24,11 @@ function getNewPosts(id){
 
 getNewPosts(id).bind(template).bind(updateUI);
 ```
+
+## API
+
+    unit(value);
+
+Returns wrapped value which can be binded to the flow. Value can be simple object, primitive value or previously wrapped value (Promise, Thunk, etc)
+
+## Examples
