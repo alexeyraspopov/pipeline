@@ -23,7 +23,7 @@
 
 ```javascript
 function getNewPosts(id){
-  return unit(loadUser(id)).bind(getUserPosts).bind(filterNewPosts);
+	return unit(loadUser(id)).bind(getUserPosts).bind(filterNewPosts);
 }
 
 getNewPosts(id).bind(template).bind(updateUI);
@@ -47,19 +47,19 @@ Unit has one method, which returns new unit.
 
 ```javascript
 function getUserInfo(id){
-  return new Promise();
+	return new Promise();
 }
 
 function getPosts(user){
-  return Maybe(user.posts);
+	return Maybe(user.posts);
 }
 
 function template(data){
-  return _.template('', data);
+	return _.template('', data);
 }
 
 function appendToView(html){
-  document.body.innerHTML = html;
+	document.body.innerHTML = html;
 }
 
 unit(getUserInfo(id)).bind(getPosts).bind(template).bind(appendToView);
