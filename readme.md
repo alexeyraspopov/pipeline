@@ -54,11 +54,3 @@ function appendToView(html){
 
 unit(getUserInfo(id)).bind(getPosts).bind(template).bind(appendToView);
 ```
-
-```javascript
-function getNewPosts(id){
-	return unit(loadUser(id)).bind(getUserPosts).bind(filterNewPosts);
-}
-
-getNewPosts(id).bind(template).bind(updateUI);
-```
