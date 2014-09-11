@@ -6,6 +6,7 @@
  - Observable
  - Thunk
  - Generator
+ - Stream 
  - Pure Value
  - Maybe, Either
 
