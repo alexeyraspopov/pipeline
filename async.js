@@ -1,4 +1,4 @@
-var unit = require('./unit');
+var unit = require('./unit').unit;
 
 function process(value){
 	return function(done){

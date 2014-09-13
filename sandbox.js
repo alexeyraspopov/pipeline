@@ -1,4 +1,4 @@
-var unit = require('./unit');
+var unit = require('./unit').unit;
 
 function square(a){
 	return a * a;
