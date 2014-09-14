@@ -1,5 +1,9 @@
 // TODO: update bind method for Promises
 
+function isNullable(value){
+	return value == null;
+}
+
 function isMonad(target){
 	return target instanceof Unit;
 }
@@ -16,6 +20,16 @@ function Unit(value){
 	this.bind = fromValue.bind(null, value);
 }
 
-module.exports = function unit(value){
+function Nothing(){
+	this.bind = function(){
+		return this;
+	}.bind(this);
+}
+
+exports.unit = function unit(value){
 	return new Unit(value);
+};
+
+exports.maybe = function maybe(value){
+	return isNullable(value) ? new Nothing() : new Unit(value);
 };
