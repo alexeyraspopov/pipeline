@@ -6,12 +6,13 @@
  - Observable
  - Thunk
  - Generator
+ - Stream 
  - Pure Value
  - Maybe, Either
 
 ## Why?
 
- 1. It's difficult to go from sync to async function without changing way of invokation of this function
+ 1. It's difficult to go from sync to async function without changing way of invokation of this function (non-local changes without problems)
  2. Calculation flow should be explicit
 
 ## Questions
