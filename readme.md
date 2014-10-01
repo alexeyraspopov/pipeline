@@ -9,6 +9,7 @@
  - Stream 
  - Pure Value
  - Maybe, Either
+ - (check wires libs)
 
 ## Why?
 
