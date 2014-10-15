@@ -33,3 +33,9 @@ exports.unit = function unit(value){
 exports.maybe = function maybe(value){
 	return isNullable(value) ? new Nothing() : new Unit(value);
 };
+
+/*function unit(value){
+	return { bind: function(morphism){
+		return unit(morphism(value));
+	} };
+}*/
