@@ -38,4 +38,16 @@ exports.maybe = function maybe(value){
 	return { bind: function(morphism){
 		return unit(morphism(value));
 	} };
-}*/
+}
+
+function unit(predicate, value){
+	return value && value.isMonad ? value : {
+		isMonad: true,
+		bind: function(success, failure){
+			var morphism = (predicate(value) ? success : failure) || function(){};
+
+			return unit(predicate, morphism(value));
+		}
+	};
+}
+*/

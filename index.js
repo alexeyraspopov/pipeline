@@ -37,23 +37,4 @@ function unit(value){
 	} };
 }
 
-// ------------------------------
-var log = function(){ console.log(arguments); },
-	Promise = require('q').Promise;
-
-function constant(value){
-	return function(){ return value; };
-}
-
-function asyncResolve(value, timeout){
-	return new Promise(function(resolve){
-		return setTimeout(resolve, timeout, value);
-	});
-}
-
-unit(asyncResolve(13, 1000))
-	.bind(log)
-	.bind(function(){ return unit('inline'); })
-	.bind(log)
-	.bind(function(){ return asyncResolve('fuck', 2000); })
-	.bind(log);
+module.exports = unit;
