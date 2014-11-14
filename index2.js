@@ -17,17 +17,17 @@ function continuate(data, resolve){
 	if (isUnit(data)) return data.bind(resolve);
 }
 
+function resolveChain(pending, data){
+	pending.forEach(function(pair){
+		pair.unit.resolve(pair.morphism(data));
+	});
+}
+
 function pendingUnit(value){
 	var pending = [];
 
 	function resolve(data){
-		return continuate(data, resolve) || resolveChain(data);
-	}
-
-	function resolveChain(data){
-		pending.forEach(function(pair){
-			pair.unit.resolve(pair.morphism(data));
-		});
+		return continuate(data, resolve) || resolveChain(pending, data);
 	}
 
 	return { bind: function(morphism){
