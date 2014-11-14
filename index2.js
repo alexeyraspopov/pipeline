@@ -1,5 +1,3 @@
-var stub = {};
-
 function isPromise(value){
 	return value && value.then;
 }
@@ -14,31 +12,38 @@ function resolvedUnit(value){
 	} };
 }
 
+function continuate(data, resolve){
+	if (isPromise(data)) return data.then(resolve);
+	if (isUnit(data)) return data.bind(resolve);
+}
+
 function pendingUnit(value){
 	var pending = [];
 
 	function resolve(data){
-		if (data === stub) return;
-		if (isPromise(data)) return data.then(resolve);
-		if (isUnit(data)) return data.bind(resolve);
+		return continuate(data, resolve) || resolveChain(data);
+	}
 
+	function resolveChain(data){
 		pending.forEach(function(pair){
-			pair.u.resolve(pair.m(data));
+			pair.unit.resolve(pair.morphism(data));
 		});
 	}
 
 	return { bind: function(morphism){
-		var u = pendingUnit(stub);
+		var u = pendingUnit();
 
-		pending.push({ u: u, m: morphism });
-		resolve(value);
+		pending.push({ unit: u, morphism: morphism });
+		continuate(value, resolve);
 
 		return u;
 	}, resolve: resolve };
 }
 
 function unit(value){
-	return (isPromise(value) || isUnit(value) ? pendingUnit : resolvedUnit)(value);
+	if (isUnit(value)) return value;
+
+	return (isPromise(value) ? pendingUnit : resolvedUnit)(value);
 }
 
 module.exports = unit;
